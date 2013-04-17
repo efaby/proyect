@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="{{ asset('libraries/js/jquery-1.7.2.min.js') }}"></script>
+        <script type="text/javascript" src="{{asset('libraries/js/jquery.validate.js')}}"></script>
+        <script type="text/javascript" src="{{asset('libraries/js/jquery.form.js')}}"></script>
+        <script	type="text/javascript"	src="{{asset('libraries/js/jquery-ui-1.8.21.custom.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('libraries/js/jquery.ui.datepicker-es.js')}}"></script>
+        <script type="text/javascript" src="{{asset('libraries/js/jquery-latest.js')}}"></script>
+        {% block javascripts %}
+        {% endblock %}
+        {% block stylesheets %}
+        <link  href="{{asset('libraries/css/jquery-ui-1.8.21.custom.css')}}" rel="stylesheet" type="text/css" media="screen" ></link>
+		<link  href="{{asset('css/modules.css')}}" rel="stylesheet" type="text/css" media="screen" ></link>
+		<link  href="{{asset('css/layout.css')}}" rel="stylesheet" type="text/css" media="screen" ></link>
+        {% endblock %}
+        <title></title>
+    </head>
+    <body>
+     	<body id="top">
+
+<div class="wrapper col0">
+ 
+  <div id="topline"> <!-- Menu superior -->
+
+  
+    <div id="search">
+    </div>
+    <br class="clear" />
+    	{% include 'PaymentApplicationBundle::profileMenu.html.twig' %}
+  </div>
+</div>
+<div id="contentAll">
+	menu principal
+			<div id="barra7">
+        		{% block content %}{% endblock %}
+        	</div>
+</div>
+<div class="wrapper col4">
+  <div id="footer"> 
+    <div class="box contactdetails">  
+    </div>
+    <br class="clear" />
+  </div>
+  <div align="center" id="copyright">Copyright © 2013 - SICAP. Todos los derechos reservados</div>
+</div>
+</body>
+</html>

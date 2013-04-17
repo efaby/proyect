@@ -1,0 +1,36 @@
+_login:
+    pattern:  /login
+    defaults: { _controller: PaymentSecurityBundle:Security:login }
+_logout:
+    pattern:  /logout
+    defaults: { _controller: PaymentSecurityBundle:Security:logout }
+_closeSession:
+    pattern:  /cerrar-sesion
+    defaults: { _controller: PaymentSecurityBundle:Security:logout }
+_listUser:
+    pattern:  /gestion-de-usuarios/listado
+    defaults: { _controller: PaymentSecurityBundle:Administration:listUsers }
+_activeUser:
+    pattern:  /gestion-de-usuarios/activacion
+    defaults: { _controller: PaymentSecurityBundle:Administration:activeUser }
+_editUser:
+    pattern:  /gestion-de-usuarios/edicion
+    defaults: { _controller: PaymentSecurityBundle:Administration:editUser }
+_deleteUser:
+    pattern:  /gestion-de-usuarios/eliminacion
+    defaults: { _controller: PaymentSecurityBundle:Administration:deleteUser }
+_editProfile:
+    pattern:  /perfil-de-usuario
+    defaults: { _controller: PaymentSecurityBundle:Administration:editProfile }
+fos_user_resetting_reset_active:
+    pattern:  /active/password
+    defaults: { _controller: PaymentSecurityBundle:Resetting:activePassword }
+    
+logo_imageleft:
+    pattern:  /bundles/paymentapplication/images/img_left_mail.jpg
+    
+logo_imageright:
+    pattern:  /bundles/paymentapplication/images/img_right_mail.jpg
+    
+logo_imagecenter:
+    pattern:  /bundles/paymentapplication/images/img_center_mail.jpg

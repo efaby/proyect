@@ -1,0 +1,53 @@
+Member:
+    type: entity
+    table: member
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        documentNumber:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: document_number
+        name:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+        lastname:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+        birthDate:
+            type: date
+            nullable: true
+            column: birth_date
+        address:
+            type: string
+            length: 512
+            fixed: false
+            nullable: false
+        email:
+            type: string
+            length: 256
+            fixed: false
+            nullable: true
+        phone:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+        celularPhone:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: celular_phone
+    lifecycleCallbacks: {  }

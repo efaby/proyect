@@ -1,0 +1,61 @@
+Payment\DataAccessBundle\Entity\ManagerialMember:
+    type: entity
+    table: managerial_member
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        activationDate:
+            type: datetime
+            nullable: false
+            column: activation_date
+        desactivationDate:
+            type: datetime
+            nullable: true
+            column: desactivation_date
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
+    manyToOne:
+        charge:
+            targetEntity: Charge
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                charge_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        managerial:
+            targetEntity: Managerial
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                managerial_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        member:
+            targetEntity: Member
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                member_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        systemUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                system_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

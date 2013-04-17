@@ -1,0 +1,42 @@
+Account:
+    type: entity
+    table: account
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        accountNumber:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: account_number
+        meterNumber:
+            type: string
+            length: 64
+            fixed: false
+            nullable: true
+            column: meter_number
+    manyToOne:
+        member:
+            targetEntity: Member
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                member_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        systemUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                system_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

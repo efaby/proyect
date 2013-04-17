@@ -1,0 +1,44 @@
+Payment\DataAccessBundle\Entity\Managerial:
+    type: entity
+    table: managerial
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+        ruc:
+            type: string
+            length: 13
+            fixed: false
+            nullable: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
+        startDate:
+            type: datetime
+            nullable: false
+            column: start_date
+        endDate:
+            type: datetime
+            nullable: false
+            column: end_date
+    manyToOne:
+        systemUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                system_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

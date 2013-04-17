@@ -1,0 +1,13 @@
+{% block field_row %}
+{% spaceless %}
+{% set class = {'class':'required', 'size': '14'} %}
+    <tr><td class="title" valign="top">
+         <label for="{{ id }}">{{ id|trans([], 'FOSUserBundle') }}</label>
+    </td>
+    <td>
+		{{ form_widget(form, { 'attr': class }) }}
+    </td>
+   
+    </tr>
+{% endspaceless %}
+{% endblock field_row %}

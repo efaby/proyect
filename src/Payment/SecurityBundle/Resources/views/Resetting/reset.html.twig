@@ -1,0 +1,14 @@
+{% extends 'PaymentApplicationBundle::layoutLogin.html.twig' %}
+{% block title %}Cambiar Clave - {{ parent() }} {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/infoqualityresumesecurity/js/security.js') }}"></script>
+<script type="text/javascript">
+	validatePassword();
+	
+</script>
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/infoqualityresumesecurity/css/security.css') }}" />
+{% endblock %}
+{% block content %}
+{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+{% endblock %}

@@ -1,0 +1,26 @@
+ServiceCost:
+    type: entity
+    table: service_cost
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        description:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+        costValue:
+            type: decimal
+            nullable: false
+            column: cost_value
+        name:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

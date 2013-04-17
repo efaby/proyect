@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+#contentRight{
+
+}
+
+#tableEditUser {
+	
+}
+#tableListUser {
+	border: 1px solid;	
+	border-collapse: collapse;
+	color: #000000;
+}
+
+#tableListUser th {
+	
+}
+
+#tableListUser tr {
+	border-bottom: 1px solid;
+	}
+	
+#paginator {
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#paginator span a {
+	
+
+	}
+	
+#paginator span {
+	
+
+	}
+
+#tableEditUser input {
+	
+}
+	
+	#button_reset {
+	background-image: url("../../infoqualityresumeapplication/images/button_reset.jpg");
+	background-repeat: no-repeat;
+	border: medium none currentColor;
+	color: #FFFFFF;
+	float: right;
+	height: 25px;
+	font-size:12px;
+	width: 137px;
+	text-align:center;}
+	
+.tableSearch div.error {
+	color: #222222 !important;
+	font-size: 7pt;
+}
+
+a {
+	color: #7E1F20;
+}

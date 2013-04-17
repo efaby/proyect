@@ -1,0 +1,65 @@
+{% extends 'PaymentApplicationBundle::layoutLogin.html.twig' %}
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/paymentsecurity/js/security.js') }}"></script>
+<script type="text/javascript">
+	validate();
+</script>        
+{% endblock %}
+
+{% block content %}
+{% if error %}
+<div id="error_tabl"><div id="error_icon"></div><div id="error_message">{{ error.message |trans({}, 'FOSUserBundle') }}</div></div>
+{% endif %}
+<form method="post" id="fos_user_form" action="{{ path("fos_user_security_check") }}">
+    <div id="barra6">
+        <div id="caja-login">
+            <div id="caja" class="texto_blanco">
+                
+                    <table width="250" border="0" align="center" cellpadding="0" cellspacing="3">
+                        <tr>
+                            <td height="20px" width="115px" valign="top">
+                                <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                            </td>
+                            
+                            <td valign="top">
+                                <label>
+                                    <input type="text" name="_username" value="{{ last_username }}" class="texto-menu" maxlength="64" size="14"/>
+                                </label>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td height="20px" width="115px" valign="top"><label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label></td>
+                            <td valign="top">
+                                <label>
+                                    <input type="password" name="_password" class="texto-menu" maxlength="64" size="14"/>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td id="texto_gris" colspan="2" align="right"> 
+                            <div id="password">
+                                   <a id="password" href="{{ path('fos_user_resetting_request') }}">¿Olvid&oacute; su contrase&ntilde;a?</a>   
+                            </div>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="texto_gris"><label>
+                                    <left>
+                                        <div id="general_button">
+                                       		 <center><input style="margin-right: 16px;" type="submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" id="button_enter"></center>
+									</div>
+								</left>
+							</td>
+						</tr>
+					</table>
+				
+		  </div>
+		</div>
+	</div>
+</form>
+{% endblock content %}

@@ -1,0 +1,58 @@
+Payment\DataAccessBundle\Entity\Income:
+    type: entity
+    table: income
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        consumption:
+            targetEntity: Consumption
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                consumption_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fines:
+            targetEntity: Fines
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fines_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        incomeType:
+            targetEntity: IncomeType
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                income_type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        systemUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                system_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        transaction:
+            targetEntity: Transaction
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                transaction_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

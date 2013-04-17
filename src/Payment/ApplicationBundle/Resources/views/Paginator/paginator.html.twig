@@ -1,0 +1,32 @@
+<script type="text/javascript">
+function submit_form(form, page)
+{
+	var forms = document.getElementById(form);	
+	var offset = document.getElementById(form+'_offset');
+	offset.value = page;
+	forms.submit();	
+}
+
+</script>
+
+<div class="paginator"> 
+
+        {% if paginator.currentpage != 1 %}
+            <span> <a class="previous" href="javascript:submit_form('{{ paginator.form_name }}','{{ paginator.currentpage-1 }}')">&lt;&lt;</a></span>
+        {% endif %}
+        {% for i in 1..paginator.numpages%}           
+
+            {%  if( i in paginator.range) %}
+                {% if i==paginator.currentpage %}
+                    <span> {{i}}</span> 
+                {% else %}
+                <span> <a class="number_next" href="javascript:submit_form('{{ paginator.form_name }}','{{ i }}')"> {{i}}</a></span> 
+                {% endif %}
+            {% endif %}
+            
+        {% endfor %}
+        {% if ((paginator.currentpage * paginator.limit) < paginator.itemscount) %}
+       <span>  <a class="next" href="javascript:submit_form('{{ paginator.form_name }}','{{ paginator.currentpage+1 }}')">&gt;&gt;</a></span> 
+        {% endif %}  
+             
+</div>

@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+#menus {
+	width: 150px;
+	float: left;
+	
+}
+
+#content {	
+	padding-left: 10px;
+	float: left;
+	width: 87%;
+	}
+	
+#requestState {
+	position: absolute;   
+    right: 10px;
+    border: 1px solid #CCC;
+    background-color: #F2F2F2;
+    width:50px;    
+	}

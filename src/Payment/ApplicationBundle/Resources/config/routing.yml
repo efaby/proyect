@@ -1,0 +1,3 @@
+home:
+    pattern:  /inicio
+    defaults: { _controller: PaymentApplicationBundle:Default:welcome }

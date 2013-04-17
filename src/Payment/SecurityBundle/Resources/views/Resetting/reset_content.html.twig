@@ -1,0 +1,23 @@
+
+{% form_theme form 'PaymentSecurityBundle:Resetting:form.html.twig' %}
+
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset" id="fos_user_form">
+
+     <div id="barra6">
+        <div id="caja-login">
+            <div id="caja" class="texto_blanco">
+            <table border="0" cellspacing="6" cellpadding="0">
+                      
+                {{ form_widget(form) }}
+                
+    <td colspan="2" align="center"> 
+    		<br>
+        	<input type="submit" value="Cambiar Contraseña" id="button_reset"/>
+        	</td>
+        	</tr>
+        	</table>
+        	</div>
+        	</div>
+        	</div>
+</form>
+	

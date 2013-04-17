@@ -1,0 +1,52 @@
+Consumption:
+    type: entity
+    table: consumption
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        costValue:
+            type: decimal
+            nullable: false
+            column: cost_value
+        readDate:
+            type: datetime
+            nullable: false
+            column: read_date
+        systemDate:
+            type: datetime
+            nullable: false
+            column: system_date
+    manyToOne:
+        account:
+            targetEntity: Account
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                account_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cost:
+            targetEntity: ServiceCost
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cost_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        systemUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                system_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

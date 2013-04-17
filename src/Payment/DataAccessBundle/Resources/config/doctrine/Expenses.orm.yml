@@ -1,0 +1,27 @@
+Payment\DataAccessBundle\Entity\Expenses:
+    type: entity
+    table: expenses
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        description:
+            type: string
+            length: 256
+            fixed: false
+            nullable: false
+    manyToOne:
+        transaction:
+            targetEntity: Transaction
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                transaction_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

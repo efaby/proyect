@@ -1,0 +1,7 @@
+parameters:
+#    payment_security.example.class: Payment\SecurityBundle\Example
+
+services:
+#    payment_security.example:
+#        class: %payment_security.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,19 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: db_payment_service
+    database_user: root
+    database_password: sistemas
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: es
+    secret: 77d10bb4562aaece1080e3d528c8e981a9
+    database_path: null
+    
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: clubrecargas@gmail.com
+    mailer_password: clubrecargas1234

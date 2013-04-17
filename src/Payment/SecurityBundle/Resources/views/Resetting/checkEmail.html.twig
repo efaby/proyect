@@ -1,0 +1,12 @@
+{% extends 'PaymentApplicationBundle::layoutLogin.html.twig' %}
+{% block title %}Verificar Email - {{ parent() }} {% endblock %}
+{% block content %}
+  <div id="barra6">
+        <div id="caja-login">
+            <div id="caja" class="texto_blanco">
+            <div style="text-align: justify;">
+{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+</div>
+</div>
+</div></div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'PaymentApplicationBundle::layout.html.twig' %}
+
+{% block title %}Editar Perfil - {{ parent() }} {% endblock %}
+
+{% block javascripts %}
+ {{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/paymentsecurity/js/administrator.js') }}"></script>
+<script type="text/javascript">
+loadEvents();
+    </script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/paymentsecurity/css/security.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+    <form action="{{ path('_editProfile') }}" method="post" {{ form_enctype(form) }} id="userEdit">
+<div id="contentLeft">
+ {% for flashMessage in app.session.flashbag.get('message') %}
+    <div class="flash-message">
+        {{ flashMessage|trans({}, 'FOSUserBundle') }}
+    </div><br>
+{% endfor %}
+{{ app.session.flashbag.set('message', '')}}
+{{ form_errors(form.canonical) }}
+{{ form_errors(form.name) }}
+{{ form_errors(form.lastname) }}
+{{ form_errors(form) }}
+                <div id="contentRight">
+                    <table id="tableEditUser">
+{% set class = {'class':'required', 'value': '******'} %}                   
+                            <tr>
+                                <td class="title" valign="top">{{ form_label(form.canonical) }}</td>
+                                <td>{{ form_widget(form.canonical, { 'attr': {'class': 'required', 'style': 'text-transform:lowercase'} }) }} </td>
+                            </tr>                        
+                            <tr>
+                                <td class="title" valign="top">{{ form_label(form.name) }}</td>
+                                <td>{{ form_widget(form.name, { 'attr': {'class': 'required'} }) }} </td>
+                            </tr>
+                            <tr>
+                                <td class="title" valign="top">{{ form_label(form.lastname) }}</td>
+                                <td>{{ form_widget(form.lastname, { 'attr': {'class': 'required'} }) }} </td>
+                            </tr>
+{% for item in form.plainPassword %}
+                            <tr>
+                                <td>{{ form_label(item) }}</td>
+                                <td>{{ form_widget(item, { 'attr': class }) }}</td>
+                            </tr>
+{% endfor %}
+{% for item in form.email %}
+                            <tr>
+                                <td>{{ form_label(item) }}</td>
+                                <td>{{ form_widget(item, { 'attr': {'class':'required'}}) }}</td>
+                            </tr>
+{% endfor %}
+                            <tr>
+                                <td height="50px;" align="right" valign="bottom">
+                                    <input type="submit" value="Guardar" name="btsend" id="button_enter"/>
+                                    <input type="button" value="Cancelar" id="button_enter" onclick="javascript:location.href='{{ path('home') }}'"/>
+ {{ form_rest(form) }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+{% endblock %}
