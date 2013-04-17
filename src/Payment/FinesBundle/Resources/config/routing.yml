@@ -1,3 +1,1 @@
-payment_fines_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: PaymentFinesBundle:Default:index }
+
