@@ -1,0 +1,61 @@
+Payment\DataAccessBundle\Entity\NavigationItem:
+    type: entity
+    repositoryClass: Payment\DataAccessBundle\Entity\NavigationItemRepository
+    table: navigation_item
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        parentId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: parent_id
+        title:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+        linkId:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: link_id
+        icon:
+            type: string
+            length: 512
+            fixed: false
+            nullable: true
+        ordering:
+            type: integer
+            unsigned: false
+            nullable: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
+        level:
+            type: integer
+            unsigned: false
+            nullable: false
+        style:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+        alt:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+        roles:
+            type: string
+            length: 512
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }
