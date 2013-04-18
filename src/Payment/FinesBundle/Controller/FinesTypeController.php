@@ -9,6 +9,8 @@ use Payment\FinesBundle\Form\Type\FinesTypeSearchType;
 use Payment\FinesBundle\Entity\FinesTypeSearch;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Payment\DataAccessBundle\Entity\FinesType;
+use Payment\FinesBundle\Form\Type\FinesTypeEditType;
 
 class FinesTypeController extends Controller
 {
@@ -62,6 +64,50 @@ class FinesTypeController extends Controller
     public function activeFinesTypeAction(Request $request) 
     {
     	return $this->actionToFinesType($request);
+    }
+    
+    /**
+     * @Template()
+     * Secure(roles="ROLE_ADMIN")
+     */
+    public function editFinesTypeAction(Request $request) 
+    {    	
+    	$title = "Editar";
+    	$finesTypeId = $request->request->get('cid', 0);
+    	$em = $this->getDoctrine()->getManager();
+    	$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
+    	if (!$finesType) {
+    		$finesType = new FinesType();
+    		$title = "Crear";
+    	}   
+    	
+    	$finesTypeForm = $this->createForm(new FinesTypeEditType(), $finesType);
+    	
+    	if ($request->getMethod() == 'POST') {
+    		$band = $request->request->get('band', 0);
+    		if ($band != 0) 
+    		{    
+    			$finesTypeForm->bind($request);    
+    			if ($userForm->isValid()) 
+    			{
+    				print_r("llego");
+    				exit();
+    				$user->setUsernameCanonical($user->getCanonical());
+    				if ($this->isUniqueUser($user, $message)) {
+    					 
+    					$user->setUsername($user->getUsernameCanonical());
+    					if ($this->saveUser($user)) {
+    						$this->get('session')->getFlashBag()->add('message', 'El Usuario ha sido almacenado &eacute;xitosamente.');
+    					} else {
+    						$this->get('session')->getFlashBag()->add('message', 'No se ha podido realizar la tarea por favor int&eacute;ntelo m&aacute;s tarde.');
+    					}
+    					return $this->redirect($this->generateUrl('_listUser'));
+    				}
+    				$this->get('session')->getFlashBag()->add('message', $message);
+    			}
+    		}
+    	}
+    	return array('form' => $finesTypeForm->createView(), 'title' => $title);
     }
     
     private function actionToFinesType(Request $request, $active = true)

@@ -136,4 +136,9 @@ class FinesType
     {
         return $this->isActive;
     }
+    
+    public function setId($id)
+    {
+    	$this->id = $id;
+    }
 }
