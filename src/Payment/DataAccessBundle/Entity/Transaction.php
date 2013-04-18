@@ -164,4 +164,88 @@ class Transaction
     {
         return $this->transactionType;
     }
+    /**
+     * @var integer
+     */
+    private $transactionTypeId;
+
+    /**
+     * @var integer
+     */
+    private $managerialId;
+
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+
+    /**
+     * Set transactionTypeId
+     *
+     * @param integer $transactionTypeId
+     * @return Transaction
+     */
+    public function setTransactionTypeId($transactionTypeId)
+    {
+        $this->transactionTypeId = $transactionTypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get transactionTypeId
+     *
+     * @return integer 
+     */
+    public function getTransactionTypeId()
+    {
+        return $this->transactionTypeId;
+    }
+
+    /**
+     * Set managerialId
+     *
+     * @param integer $managerialId
+     * @return Transaction
+     */
+    public function setManagerialId($managerialId)
+    {
+        $this->managerialId = $managerialId;
+    
+        return $this;
+    }
+
+    /**
+     * Get managerialId
+     *
+     * @return integer 
+     */
+    public function getManagerialId()
+    {
+        return $this->managerialId;
+    }
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return Transaction
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
 }

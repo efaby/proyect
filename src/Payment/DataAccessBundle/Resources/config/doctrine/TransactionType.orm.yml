@@ -20,4 +20,8 @@ Payment\DataAccessBundle\Entity\TransactionType:
             length: 256
             fixed: false
             nullable: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
     lifecycleCallbacks: {  }

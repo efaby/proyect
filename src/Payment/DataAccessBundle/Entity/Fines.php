@@ -164,4 +164,88 @@ class Fines
     {
         return $this->systemUser;
     }
+    /**
+     * @var integer
+     */
+    private $finesTypeId;
+
+    /**
+     * @var integer
+     */
+    private $memberId;
+
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+
+    /**
+     * Set finesTypeId
+     *
+     * @param integer $finesTypeId
+     * @return Fines
+     */
+    public function setFinesTypeId($finesTypeId)
+    {
+        $this->finesTypeId = $finesTypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get finesTypeId
+     *
+     * @return integer 
+     */
+    public function getFinesTypeId()
+    {
+        return $this->finesTypeId;
+    }
+
+    /**
+     * Set memberId
+     *
+     * @param integer $memberId
+     * @return Fines
+     */
+    public function setMemberId($memberId)
+    {
+        $this->memberId = $memberId;
+    
+        return $this;
+    }
+
+    /**
+     * Get memberId
+     *
+     * @return integer 
+     */
+    public function getMemberId()
+    {
+        return $this->memberId;
+    }
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return Fines
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
 }

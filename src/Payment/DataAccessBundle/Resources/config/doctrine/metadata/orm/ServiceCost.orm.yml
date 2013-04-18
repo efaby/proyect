@@ -23,4 +23,8 @@ ServiceCost:
             length: 64
             fixed: false
             nullable: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
     lifecycleCallbacks: {  }

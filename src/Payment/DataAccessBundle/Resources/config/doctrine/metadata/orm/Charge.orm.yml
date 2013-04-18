@@ -19,4 +19,8 @@ Charge:
             length: 128
             fixed: false
             nullable: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
     lifecycleCallbacks: {  }

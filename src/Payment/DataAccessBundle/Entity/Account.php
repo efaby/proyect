@@ -136,4 +136,88 @@ class Account
     {
         return $this->systemUser;
     }
+    /**
+     * @var integer
+     */
+    private $memberId;
+
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+    /**
+     * @var boolean
+     */
+    private $isActive;
+
+
+    /**
+     * Set memberId
+     *
+     * @param integer $memberId
+     * @return Account
+     */
+    public function setMemberId($memberId)
+    {
+        $this->memberId = $memberId;
+    
+        return $this;
+    }
+
+    /**
+     * Get memberId
+     *
+     * @return integer 
+     */
+    public function getMemberId()
+    {
+        return $this->memberId;
+    }
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return Account
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return Account
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
 }

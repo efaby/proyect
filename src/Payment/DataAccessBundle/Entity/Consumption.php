@@ -192,4 +192,88 @@ class Consumption
     {
         return $this->systemUser;
     }
+    /**
+     * @var integer
+     */
+    private $costId;
+
+    /**
+     * @var integer
+     */
+    private $accountId;
+
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+
+    /**
+     * Set costId
+     *
+     * @param integer $costId
+     * @return Consumption
+     */
+    public function setCostId($costId)
+    {
+        $this->costId = $costId;
+    
+        return $this;
+    }
+
+    /**
+     * Get costId
+     *
+     * @return integer 
+     */
+    public function getCostId()
+    {
+        return $this->costId;
+    }
+
+    /**
+     * Set accountId
+     *
+     * @param integer $accountId
+     * @return Consumption
+     */
+    public function setAccountId($accountId)
+    {
+        $this->accountId = $accountId;
+    
+        return $this;
+    }
+
+    /**
+     * Get accountId
+     *
+     * @return integer 
+     */
+    public function getAccountId()
+    {
+        return $this->accountId;
+    }
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return Consumption
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
 }

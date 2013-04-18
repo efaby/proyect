@@ -108,4 +108,32 @@ class ServiceCost
     {
         return $this->name;
     }
+    /**
+     * @var boolean
+     */
+    private $isActive;
+
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return ServiceCost
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
 }

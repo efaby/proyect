@@ -22,4 +22,8 @@ FinesType:
         cost:
             type: decimal
             nullable: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
     lifecycleCallbacks: {  }

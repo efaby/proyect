@@ -50,4 +50,8 @@ Member:
             fixed: false
             nullable: false
             column: celular_phone
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
     lifecycleCallbacks: {  }

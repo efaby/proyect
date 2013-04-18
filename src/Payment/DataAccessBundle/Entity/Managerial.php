@@ -192,4 +192,32 @@ class Managerial
     {
         return $this->systemUser;
     }
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return Managerial
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
 }

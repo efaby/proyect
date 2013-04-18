@@ -248,4 +248,32 @@ class Member
     {
         return $this->celularPhone;
     }
+    /**
+     * @var boolean
+     */
+    private $isActive;
+
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return Member
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
 }

@@ -164,4 +164,144 @@ class Income
     {
         return $this->transaction;
     }
+    /**
+     * @var integer
+     */
+    private $incomeTypeId;
+
+    /**
+     * @var integer
+     */
+    private $transactionId;
+
+    /**
+     * @var integer
+     */
+    private $consumptionId;
+
+    /**
+     * @var integer
+     */
+    private $finesId;
+
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+
+    /**
+     * Set incomeTypeId
+     *
+     * @param integer $incomeTypeId
+     * @return Income
+     */
+    public function setIncomeTypeId($incomeTypeId)
+    {
+        $this->incomeTypeId = $incomeTypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get incomeTypeId
+     *
+     * @return integer 
+     */
+    public function getIncomeTypeId()
+    {
+        return $this->incomeTypeId;
+    }
+
+    /**
+     * Set transactionId
+     *
+     * @param integer $transactionId
+     * @return Income
+     */
+    public function setTransactionId($transactionId)
+    {
+        $this->transactionId = $transactionId;
+    
+        return $this;
+    }
+
+    /**
+     * Get transactionId
+     *
+     * @return integer 
+     */
+    public function getTransactionId()
+    {
+        return $this->transactionId;
+    }
+
+    /**
+     * Set consumptionId
+     *
+     * @param integer $consumptionId
+     * @return Income
+     */
+    public function setConsumptionId($consumptionId)
+    {
+        $this->consumptionId = $consumptionId;
+    
+        return $this;
+    }
+
+    /**
+     * Get consumptionId
+     *
+     * @return integer 
+     */
+    public function getConsumptionId()
+    {
+        return $this->consumptionId;
+    }
+
+    /**
+     * Set finesId
+     *
+     * @param integer $finesId
+     * @return Income
+     */
+    public function setFinesId($finesId)
+    {
+        $this->finesId = $finesId;
+    
+        return $this;
+    }
+
+    /**
+     * Get finesId
+     *
+     * @return integer 
+     */
+    public function getFinesId()
+    {
+        return $this->finesId;
+    }
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return Income
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
 }

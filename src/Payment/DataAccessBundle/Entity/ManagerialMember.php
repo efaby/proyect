@@ -220,4 +220,116 @@ class ManagerialMember
     {
         return $this->systemUser;
     }
+    /**
+     * @var integer
+     */
+    private $managerialId;
+
+    /**
+     * @var integer
+     */
+    private $chargeId;
+
+    /**
+     * @var integer
+     */
+    private $memberId;
+
+    /**
+     * @var integer
+     */
+    private $systemUserId;
+
+
+    /**
+     * Set managerialId
+     *
+     * @param integer $managerialId
+     * @return ManagerialMember
+     */
+    public function setManagerialId($managerialId)
+    {
+        $this->managerialId = $managerialId;
+    
+        return $this;
+    }
+
+    /**
+     * Get managerialId
+     *
+     * @return integer 
+     */
+    public function getManagerialId()
+    {
+        return $this->managerialId;
+    }
+
+    /**
+     * Set chargeId
+     *
+     * @param integer $chargeId
+     * @return ManagerialMember
+     */
+    public function setChargeId($chargeId)
+    {
+        $this->chargeId = $chargeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get chargeId
+     *
+     * @return integer 
+     */
+    public function getChargeId()
+    {
+        return $this->chargeId;
+    }
+
+    /**
+     * Set memberId
+     *
+     * @param integer $memberId
+     * @return ManagerialMember
+     */
+    public function setMemberId($memberId)
+    {
+        $this->memberId = $memberId;
+    
+        return $this;
+    }
+
+    /**
+     * Get memberId
+     *
+     * @return integer 
+     */
+    public function getMemberId()
+    {
+        return $this->memberId;
+    }
+
+    /**
+     * Set systemUserId
+     *
+     * @param integer $systemUserId
+     * @return ManagerialMember
+     */
+    public function setSystemUserId($systemUserId)
+    {
+        $this->systemUserId = $systemUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get systemUserId
+     *
+     * @return integer 
+     */
+    public function getSystemUserId()
+    {
+        return $this->systemUserId;
+    }
 }
