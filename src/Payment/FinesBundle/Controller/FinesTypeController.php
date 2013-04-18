@@ -53,24 +53,48 @@ class FinesTypeController extends Controller
      */
     public function deleteFinesTypeAction(Request $request) 
     {
+    	return $this->actionToFinesType($request,false);
+    }
+    
+    /**
+     * Secure(roles="ROLE_ADMIN")
+     */
+    public function activeFinesTypeAction(Request $request) 
+    {
+    	return $this->actionToFinesType($request);
+    }
+    
+    private function actionToFinesType(Request $request, $active = true)
+    {
     	$finesTypeId = $request->request->get('cid', 0);
-        if (is_array($finesTypeId)) {
-            $finesTypeId = $finesTypeId[0];
-        }
-        
-        $em = $this->getDoctrine()->getManager();
-    	$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
+    	if (is_array($finesTypeId)) {
+    		$finesTypeId = $finesTypeId[0];
+    	}
     	
+    	$em = $this->getDoctrine()->getManager();
+    	$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
+    	 
     	if (!$finesType) {
     		$message = "El item seleccionado no ha podido ser encontrado.";
     	} else {
-    		$em->remove($finesType);    		
-    		$em->flush();
-    		$message = "El item ha sido Eliminado éxitosamente.";    		
-    	} 	
-    	
+    		if ($active)
+    		{
+    			$publish = $request->request->get('publish');
+    			$finesType->setIsActive($publish);
+    			$em->flush();
+    			if ($publish == 1) {
+    				$message = "El item ha sido Activado &eacute;xitosamente.";
+    			} else {
+    				$message = "El item ha sido Desactivado &eacute;xitosamente.";
+    			}
+    		} else {
+	    		$em->remove($finesType);
+	    		$em->flush();
+	    		$message = "El item ha sido Eliminado &eacute;xitosamente.";
+    		}
+    	}
+    	 
     	$this->get('session')->getFlashBag()->add('message', $message);
     	return $this->redirect($this->generateUrl('_listFinesType'));
     }
-    
 }
