@@ -1,5 +1,6 @@
 Payment\DataAccessBundle\Entity\Expenses:
     type: entity
+    repositoryClass: Payment\DataAccessBundle\Entity\ExpensesRepository
     table: expenses
     fields:
         id:

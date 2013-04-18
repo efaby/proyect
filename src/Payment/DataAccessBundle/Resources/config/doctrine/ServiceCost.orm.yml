@@ -1,5 +1,6 @@
 Payment\DataAccessBundle\Entity\ServiceCost:
     type: entity
+    repositoryClass: Payment\DataAccessBundle\Entity\ServiceCostRepository
     table: service_cost
     fields:
         id:

@@ -35,7 +35,7 @@ class AdministrationController extends Controller {
         $userId = $user->getId();
         $userForm = $this->createForm(new UserSearchType(), $userEntity);
         if ($request->getMethod() == 'POST') {
-            $userForm->bindRequest($request);
+            $userForm->bind($request);
             $datas = $userForm->getData();
             if ($userForm->isValid()) {
                 $userText = $datas->getName();

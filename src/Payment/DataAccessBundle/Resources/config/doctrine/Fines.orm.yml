@@ -1,5 +1,6 @@
 Payment\DataAccessBundle\Entity\Fines:
     type: entity
+    repositoryClass: Payment\DataAccessBundle\Entity\FinesRepository
     table: fines
     fields:
         id:
