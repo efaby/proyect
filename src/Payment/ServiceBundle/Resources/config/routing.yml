@@ -1,3 +1,12 @@
-payment_service_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: PaymentServiceBundle:Default:index }
+_listServiceCost:
+    pattern:  /gestion-de-servicios/listado
+    defaults: { _controller: PaymentServiceBundle:ServiceCost:listServiceCost }
+_activeServiceCost:
+    pattern:  /gestion-de-servicios/activacion
+    defaults: { _controller: PaymentServiceBundle:ServiceCost:activeServiceCost }
+_editServiceCost:
+    pattern:  /gestion-de-servicios/edicion
+    defaults: { _controller: PaymentServiceBundle:ServiceCost:editServiceCost }
+_deleteServiceCost:
+    pattern:  /gestion-de-servicios/eliminacion
+    defaults: { _controller: PaymentServiceBundle:ServiceCost:deleteServiceCost }
