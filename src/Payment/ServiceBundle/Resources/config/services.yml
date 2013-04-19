@@ -1,0 +1,7 @@
+parameters:
+#    payment_service.example.class: Payment\ServiceBundle\Example
+
+services:
+#    payment_service.example:
+#        class: %payment_service.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
