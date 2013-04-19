@@ -3,7 +3,7 @@
 namespace Payment\DataAccessBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * FinesType
  */
@@ -16,16 +16,28 @@ class FinesType
 
     /**
      * @var string
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/",
+     *     message = "Valor de nombre es incorrecto."
+     * )
      */
     private $name;
 
-    /**
+     /**
      * @var string
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/",
+     *     message = "Valor de descripción es incorrecto."
+     * )
      */
     private $description;
 
-    /**
+     /**
      * @var float
+     * @Assert\Regex(
+     *     pattern = "/^(-)?\d+(\.\d\d)?$/",
+     *     message = "El Valor es incorrecto."
+     * )
      */
     private $cost;
 

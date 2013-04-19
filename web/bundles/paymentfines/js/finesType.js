@@ -9,9 +9,9 @@ $.validator.addMethod(
     "Please check your input." 
     ); 
 
-function loadEvents(){	
-	
+function loadEvents(){		
     setValidations(); 
+    setValidationsEdit();
 }
 
 function setValidations(){
@@ -35,3 +35,43 @@ function setValidations(){
         }
     });
 }
+
+function setValidationsEdit(){
+    $("#finesTypeEdit").validate({
+        event: "blur", 
+        rules: {
+            'finesTypeEdit[name]': {        		
+                regex: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/ 
+            },
+            'finesTypeEdit[description]': {        		
+                regex: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/ 
+            },
+            'finesTypeEdit[cost]': {        		
+                regex: /^(-)?\d+(\.\d\d)?$/
+            },            
+        },
+        messages: {
+            'finesTypeEdit[description]': { 
+                regex: 'Por favor ingrese letras (a-z), números (0-9) ó (-),(_),(@)' 
+            } ,
+            'finesTypeEdit[name]': { 
+                regex: 'Por favor ingrese letras (a-z), números (0-9) ó (-),(_),(@)' 
+            },
+            'finesTypeEdit[cost]': { 
+                regex: 'Por favor ingrese una cantidad valida.' 
+            } ,
+        },
+        debug: true,
+        errorElement: "div",
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+}
+
+$(document).ready(function(){
+	$("#finesTypeEdit_cost").keyup(function(){
+	if ($(this).val() != '')
+	$(this).val($(this).attr('value').replace(/[^0-9'\.]/g, ""));
+	});
+});

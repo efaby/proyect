@@ -74,6 +74,10 @@ class FinesTypeController extends Controller
     {    	
     	$title = "Editar";
     	$finesTypeId = $request->request->get('cid', 0);
+    	if (is_array($finesTypeId)) {
+    		$finesTypeId = $finesTypeId[0];
+    	}
+    	
     	$em = $this->getDoctrine()->getManager();
     	$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
     	if (!$finesType) {
@@ -88,22 +92,13 @@ class FinesTypeController extends Controller
     		if ($band != 0) 
     		{    
     			$finesTypeForm->bind($request);    
-    			if ($userForm->isValid()) 
+    			if ($finesTypeForm->isValid()) 
     			{
-    				print_r("llego");
-    				exit();
-    				$user->setUsernameCanonical($user->getCanonical());
-    				if ($this->isUniqueUser($user, $message)) {
-    					 
-    					$user->setUsername($user->getUsernameCanonical());
-    					if ($this->saveUser($user)) {
-    						$this->get('session')->getFlashBag()->add('message', 'El Usuario ha sido almacenado &eacute;xitosamente.');
-    					} else {
-    						$this->get('session')->getFlashBag()->add('message', 'No se ha podido realizar la tarea por favor int&eacute;ntelo m&aacute;s tarde.');
-    					}
-    					return $this->redirect($this->generateUrl('_listUser'));
-    				}
-    				$this->get('session')->getFlashBag()->add('message', $message);
+    				$em->persist($finesType);
+    				$em->flush();
+    				$this->get('session')->getFlashBag()->add('message', 'El Item ha sido almacenado &eacute;xitosamente.');
+    				
+    				return $this->redirect($this->generateUrl('_listFinesType'));	
     			}
     		}
     	}

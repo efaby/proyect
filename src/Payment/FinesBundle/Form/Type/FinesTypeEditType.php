@@ -16,6 +16,6 @@ class FinesTypeEditType extends AbstractType
 
 	public function getName()
 	{
-		return 'FinesTypeEdit';
+		return 'finesTypeEdit';
 	}
 }

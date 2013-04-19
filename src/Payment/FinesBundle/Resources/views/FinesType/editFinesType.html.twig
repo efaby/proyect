@@ -2,7 +2,7 @@
 {% block title %}Editar Tipo de Multa - {{ parent() }} {% endblock %}
 {% block javascripts %}
  {{ parent() }}
- <script type="text/javascript" src="{{ asset('bundles/paymentfines/js/finesType.js') }}"></script>
+ 
 <script type="text/javascript">
 loadEvents();
 </script>
@@ -11,7 +11,7 @@ loadEvents();
 
 {% block content %}
 
-<form action="{{ path('_editFinesType') }}" method="post" {{ form_enctype(form) }} id="userEdit">
+<form action="{{ path('_editFinesType') }}" method="post" {{ form_enctype(form) }} id="finesTypeEdit" name="finesTypeEdit">
 <div id="contentLeft">
  {% for flashMessage in app.session.flashbag.get('message') %}
     <div class="flash-message">
@@ -36,7 +36,7 @@ loadEvents();
 </tr>
 <tr>
 <td class="title" valign="top">{{ form_label(form.description) }}</td>
-<td>{{ form_widget(form.description) }} </td>
+<td>{{ form_widget(form.description, { 'attr': {'row': '15', 'cols':'30'} }) }} </td>
 </tr>  
 <tr>
 <td class="title" valign="top">{{ form_label(form.cost) }}</td>
