@@ -16,6 +16,11 @@ class FinesType
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese el nombre."
+     * )
+     * 
      * @Assert\Regex(
      *     pattern = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/",
      *     message = "Valor de nombre es incorrecto."
@@ -34,6 +39,9 @@ class FinesType
 
      /**
      * @var float
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese el costo de la multa."
+     * )
      * @Assert\Regex(
      *     pattern = "/^(-)?\d+(\.\d\d)?$/",
      *     message = "El Valor es incorrecto."

@@ -79,8 +79,10 @@ class FinesTypeController extends Controller
     	}
     	
     	$em = $this->getDoctrine()->getManager();
-    	$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
-    	if (!$finesType) {
+    	if ($finesTypeId > 0)
+    	{
+    		$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
+    	} else {
     		$finesType = new FinesType();
     		$title = "Crear";
     	}   
@@ -102,7 +104,7 @@ class FinesTypeController extends Controller
     			}
     		}
     	}
-    	return array('form' => $finesTypeForm->createView(), 'title' => $title);
+    	return array('form' => $finesTypeForm->createView(), 'title' => $title, 'cid'=>$finesTypeId);
     }
     
     private function actionToFinesType(Request $request, $active = true)

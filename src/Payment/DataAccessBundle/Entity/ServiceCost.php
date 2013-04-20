@@ -3,6 +3,7 @@
 namespace Payment\DataAccessBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ServiceCost
@@ -16,17 +17,37 @@ class ServiceCost
 
     /**
      * @var string
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/",
+     *     message = "Valor de descripción es incorrecto."
+     * )
      */
     private $description;
 
     /**
      * @var float
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese el costo del servicio."
+     * )
+     * @Assert\Regex(
+     *     pattern = "/^(-)?\d+(\.\d\d)?$/",
+     *     message = "El Valor es incorrecto."
+     * )
      */
     private $costValue;
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese el nombre."
+     * )
+     * 
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/",
+     *     message = "Valor de nombre es incorrecto."
+     * )
      */
+    
     private $name;
 
 
@@ -135,5 +156,10 @@ class ServiceCost
     public function getIsActive()
     {
         return $this->isActive;
+    }
+    
+    public function setId($id)
+    {
+    	$this->id = $id;
     }
 }

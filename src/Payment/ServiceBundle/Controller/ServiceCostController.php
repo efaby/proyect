@@ -9,8 +9,8 @@ use Payment\ServiceBundle\Form\Type\ServiceCostSearchType;
 use  Payment\ServiceBundle\Entity\ServiceCostSearch;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
-use Payment\DataAccessBundle\Entity\FinesType;
-use Payment\FinesBundle\Form\Type\FinesTypeEditType;
+use Payment\DataAccessBundle\Entity\ServiceCost;
+use Payment\ServiceBundle\Form\Type\ServiceCostEditType;
 
 class ServiceCostController extends Controller
 {
@@ -73,36 +73,39 @@ class ServiceCostController extends Controller
 	public function editServiceCostAction(Request $request)
 	{
 		$title = "Editar";
-		$finesTypeId = $request->request->get('cid', 0);
-		if (is_array($finesTypeId)) {
-			$finesTypeId = $finesTypeId[0];
+		$serviceCostId = $request->request->get('cid', 0);
+		if (is_array($serviceCostId)) {
+			$serviceCostId = $serviceCostId[0];
 		}
-		 
+		
 		$em = $this->getDoctrine()->getManager();
-		$finesType = $em->getRepository('PaymentDataAccessBundle:FinesType')->find($finesTypeId);
-		if (!$finesType) {
-			$finesType = new FinesType();
+		if ($serviceCostId > 0)
+		{
+			$serviceCost = $em->getRepository('PaymentDataAccessBundle:ServiceCost')->find($serviceCostId);
+		}
+		else {
+			$serviceCost = new ServiceCost();
 			$title = "Crear";
 		}
-		 
-		$finesTypeForm = $this->createForm(new FinesTypeEditType(), $finesType);
+
+		$serviceCostForm = $this->createForm(new ServiceCostEditType(), $serviceCost);
 		 
 		if ($request->getMethod() == 'POST') {
 			$band = $request->request->get('band', 0);
 			if ($band != 0)
 			{
-				$finesTypeForm->bind($request);
-				if ($finesTypeForm->isValid())
+				$serviceCostForm->bind($request);
+				if ($serviceCostForm->isValid())
 				{
-					$em->persist($finesType);
+					$em->persist($serviceCost);
 					$em->flush();
 					$this->get('session')->getFlashBag()->add('message', 'El Item ha sido almacenado &eacute;xitosamente.');
 	
-					return $this->redirect($this->generateUrl('_listFinesType'));
+					return $this->redirect($this->generateUrl('_listServiceCost'));
 				}
 			}
 		}
-		return array('form' => $finesTypeForm->createView(), 'title' => $title);
+		return array('form' => $serviceCostForm->createView(), 'title' => $title, 'cid'=>$serviceCostId);
 	}
 	
 	private function actionToServiceCost(Request $request, $active = true)

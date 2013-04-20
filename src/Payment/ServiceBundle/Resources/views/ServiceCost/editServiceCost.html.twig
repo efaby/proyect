@@ -1,8 +1,8 @@
 {% extends 'PaymentApplicationBundle::layout.html.twig' %}
-{% block title %}{{ title }} Tipo de Multa - {{ parent() }} {% endblock %}
+{% block title %}{{ title }} Costo de Servicio - {{ parent() }} {% endblock %}
 {% block javascripts %}
  {{ parent() }}
- <script type="text/javascript" src="{{ asset('bundles/paymentfines/js/finesType.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/paymentservice/js/serviceCost.js') }}"></script>
 <script type="text/javascript">
 loadEvents();
 </script>
@@ -10,8 +10,8 @@ loadEvents();
 {% endblock %}
 
 {% block content %}
-{{ title }} Tipo de Multa
-<form action="{{ path('_editFinesType') }}" method="post" {{ form_enctype(form) }} id="finesTypeEdit" name="finesTypeEdit">
+{{ title }} Costo de Servicio
+<form action="{{ path('_editServiceCost') }}" method="post" {{ form_enctype(form) }} id="serviceCostEdit" name="serviceCostEdit">
 <div id="contentLeft">
  {% for flashMessage in app.session.flashbag.get('message') %}
     <div class="flash-message">
@@ -25,7 +25,7 @@ loadEvents();
 
 {{ form_errors(form.name) }}
 {{ form_errors(form.description) }}
-{{ form_errors(form.cost) }}
+{{ form_errors(form.costValue) }}
 {{ form_errors(form) }}
 &nbsp;
 </div>
@@ -39,8 +39,8 @@ loadEvents();
 <td>{{ form_widget(form.description, { 'attr': {'row': '15', 'cols':'30'} }) }} </td>
 </tr>  
 <tr>
-<td class="title" valign="top">{{ form_label(form.cost) }}</td>
-<td>{{ form_widget(form.cost) }} </td>
+<td class="title" valign="top">{{ form_label(form.costValue) }}</td>
+<td>{{ form_widget(form.costValue, { 'attr': {'class': 'required'} }) }} </td>
 </tr>
 <tr>
 <td class="title" valign="top">{{ form_label(form.isActive) }}</td>
@@ -50,7 +50,7 @@ loadEvents();
 
 <td height="50px;" align="right" valign="bottom">
  <input type="submit" value="Guardar" name="btsend" id="button_enter"/>
- <input type="button" value="Cancelar" id="button_enter" onclick="javascript:location.href='{{ path('_listFinesType') }}'"/>
+ <input type="button" value="Cancelar" id="button_enter" onclick="javascript:location.href='{{ path('_listServiceCost') }}'"/>
 </td>
 </tr>
 </table>
