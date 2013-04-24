@@ -3,6 +3,7 @@
 namespace Payment\DataAccessBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Managerial
@@ -16,11 +17,28 @@ class Managerial
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese el nombre."
+     * )
+     * 
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/",
+     *     message = "Valor de nombre es incorrecto."
+     * )
      */
     private $name;
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese el Ruc."
+     * )
+     * 
+     * @Assert\Regex(
+     *     pattern = "/^[0-9]{13}$/",
+     *     message = "Valor del ruc es incorrecto."
+     * )
      */
     private $ruc;
 
@@ -31,11 +49,29 @@ class Managerial
 
     /**
      * @var \DateTime
+     * 
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese la Fecha de inicio."
+     * )
+     * 
+     * @Assert\Regex(
+     *     pattern = "/^\d{2,4}\-\d{1,2}\-\d{1,2}$/",
+     *     message = "Valor de Fecha de inicio es incorrecto."
+     * )
      */
     private $startDate;
 
     /**
      * @var \DateTime
+     * 
+     * @Assert\NotBlank(
+     *   message = "Por favor ingrese la Fecha de fin."
+     * )
+     * 
+     * @Assert\Regex(
+     *     pattern = "/^\d{2,4}\-\d{1,2}\-\d{1,2}$/",
+     *     message = "Valor de la Fecha de fin es incorrecto."
+     * )
      */
     private $endDate;
 
@@ -219,5 +255,10 @@ class Managerial
     public function getSystemUserId()
     {
         return $this->systemUserId;
+    }
+    
+    public function setId($id)
+    {
+    	$this->id = $id;
     }
 }

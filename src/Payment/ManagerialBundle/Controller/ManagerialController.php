@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Payment\DataAccessBundle\Entity\Managerial;
 use Payment\ManagerialBundle\Form\Type\ManagerialEditType;
+use Payment\SecurityBundle\Entity\User;
 
 class ManagerialController  extends Controller
 {
@@ -64,6 +65,54 @@ const LIMIT_PAGINATOR = 10;
     public function activeManagerialAction(Request $request)
     {
     	return $this->actionToManagerial($request);
+    }
+    
+    /**
+     * @Template()
+     * Secure(roles="ROLE_ADMIN")
+     */
+    public function editManagerialAction(Request $request)
+    {
+    	$title = "Editar";
+    	$managerialId = $request->request->get('cid', 0);
+    	if (is_array($managerialId)) {
+    		$managerialId = $managerialId[0];
+    	}
+    	 
+    	$em = $this->getDoctrine()->getManager();
+    	if ($managerialId > 0)
+    	{
+    		$managerial = $em->getRepository('PaymentDataAccessBundle:Managerial')->find($managerialId);
+    		$managerial->setStartDate($managerial->getStartDate()->format('Y-m-d'));
+    				$managerial->setEndDate($managerial->getEndDate()->format('Y-m-d'));
+    	} else {
+    		$managerial = new Managerial();
+    		$title = "Crear";
+    	}
+    	 
+    	$managerialForm = $this->createForm(new ManagerialEditType(), $managerial);
+    	 
+    	if ($request->getMethod() == 'POST') {
+    		$band = $request->request->get('band', 0);
+    		if ($band != 0)
+    		{
+    			$managerialForm->bind($request);
+    			if ($managerialForm->isValid())
+    			{
+    				$managerial->setStartDate(new \DateTime($managerial->getStartDate()));
+    				$managerial->setEndDate(new \DateTime($managerial->getEndDate()));
+    				$user = $this->get('security.context')->getToken()->getUser(); 
+    				
+    				$managerial->setSystemUserId($user->getId());
+    				$em->persist($managerial);
+    				$em->flush();
+    				$this->get('session')->getFlashBag()->add('message', 'El Item ha sido almacenado &eacute;xitosamente.');
+    
+    				return $this->redirect($this->generateUrl('_listManagerial'));
+    			}
+    		}
+    	}
+    	return array('form' => $managerialForm->createView(), 'title' => $title, 'cid'=>$managerialId);
     }
     
     private function actionToManagerial(Request $request, $active = true)

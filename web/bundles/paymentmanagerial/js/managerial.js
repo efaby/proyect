@@ -37,28 +37,34 @@ function setValidations(){
 }
 
 function setValidationsEdit(){
-    $("#finesTypeEdit").validate({
+    $("#managerialEdit").validate({
         event: "blur", 
         rules: {
-            'finesTypeEdit[name]': {        		
+            'managerialEdit[name]': {        		
                 regex: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/ 
             },
-            'finesTypeEdit[description]': {        		
-                regex: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\_\-\.\@\/]+$/ 
+            'managerialEdit[ruc]': {        		
+                regex: /^[0-9]{13}$/ 
             },
-            'finesTypeEdit[cost]': {        		
-                regex: /^(-)?\d+(\.\d\d)?$/
-            },            
+            'managerialEdit[startDate]': {        		
+                regex: /^\d{2,4}\-\d{1,2}\-\d{1,2}$/
+            },   
+            'managerialEdit[endDate]': {        		
+                regex: /^\d{2,4}\-\d{1,2}\-\d{1,2}$/
+            },  
         },
         messages: {
-            'finesTypeEdit[description]': { 
-                regex: 'Por favor ingrese letras (a-z), números (0-9) ó (-),(_),(@)' 
+            'managerialEdit[name]': { 
+                regex: 'Por favor ingrese letras (a-z), números (0-9) ó (-),(_),(@).' 
             } ,
-            'finesTypeEdit[name]': { 
-                regex: 'Por favor ingrese letras (a-z), números (0-9) ó (-),(_),(@)' 
+            'managerialEdit[ruc]': { 
+                regex: 'Por favor ingrese un Ruc Valido.' 
             },
-            'finesTypeEdit[cost]': { 
-                regex: 'Por favor ingrese una cantidad valida.' 
+            'managerialEdit[startDate]': { 
+                regex: 'Por favor ingrese una fecha de inicio válida.' 
+            } ,
+            'managerialEdit[endDate]': { 
+                regex: 'Por favor ingrese una fecha de fin válida.' 
             } ,
         },
         debug: true,
@@ -69,9 +75,28 @@ function setValidationsEdit(){
     });
 }
 
+$(function() {
+	
+	$( "#managerialEdit_startDate" ).datepicker({ 
+		dateFormat: "yy-mm-dd",
+		onSelect: function( selectedDate ) {
+            $( "#managerialEdit_endDate" ).datepicker( "option", "minDate", selectedDate );
+    }
+     });	
+	
+	$( "#managerialEdit_endDate" ).datepicker({ 
+		dateFormat: "yy-mm-dd",
+	     onSelect: function( selectedDate ) {
+	             $( "#managerialEdit_startDate" ).datepicker( "option", "maxDate", selectedDate );
+	     }
+		 });	
+});
+
+
+
 $(document).ready(function(){
-	$("#finesTypeEdit_cost").keyup(function(){
+	$("#managerialEdit_ruc").keyup(function(){
 	if ($(this).val() != '')
-	$(this).val($(this).attr('value').replace(/[^0-9'\.]/g, ""));
+	$(this).val($(this).attr('value').replace(/[^0-9']/g, ""));
 	});
 });
