@@ -12,4 +12,30 @@ use Doctrine\ORM\EntityRepository;
  */
 class ManagerialRepository extends EntityRepository
 {
+	public function findManagerialByNameToList($managerialText, $offset, $limit, $count = true) {
+	
+		$queryBuilder = $this->getEntityManager()->createQueryBuilder('m');
+		if ($count) {
+			$queryBuilder->add('select', $queryBuilder->expr()->count('m.id'));
+		} else {
+			$queryBuilder->add('select', 'm');
+			$queryBuilder->orderBy('m.name');
+			$queryBuilder->setFirstResult($offset);
+			$queryBuilder->setMaxResults($limit);
+		}
+		$queryBuilder->add('from', 'PaymentDataAccessBundle:Managerial m');
+		 
+		if ($managerialText != null) {
+			$managerialText = str_replace(' ', '%', $managerialText);
+			$managerialText = '%' . strtolower($managerialText) . '%';
+			$queryBuilder->andWhere(
+					$queryBuilder->expr()->like($queryBuilder->expr()->lower('m.name'), '?1')
+			);
+			$queryBuilder->setParameter(1, $managerialText);
+	
+		}
+		$query = $queryBuilder->getQuery();
+		$result = $query->getResult();
+		return $result;
+	}
 }

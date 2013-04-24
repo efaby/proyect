@@ -1,3 +1,12 @@
-payment_managerial_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: PaymentManagerialBundle:Default:index }
+_listManagerial:
+    pattern:  /gestion-de-directivas/listado
+    defaults: { _controller: PaymentManagerialBundle:Managerial:listManagerial }
+_activeManagerial:
+    pattern:  /gestion-de-directivas/activacion
+    defaults: { _controller: PaymentManagerialBundle:Managerial:activeManagerial }
+_editManagerial:
+    pattern:  /gestion-de-directivas/edicion
+    defaults: { _controller: PaymentManagerialBundle:Managerial:editManagerial }
+_deleteManagerial:
+    pattern:  /gestion-de-directivas/eliminacion
+    defaults: { _controller: PaymentManagerialBundle:Managerial:deleteManagerial }
