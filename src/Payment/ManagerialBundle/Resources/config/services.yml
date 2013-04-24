@@ -1,0 +1,7 @@
+parameters:
+#    payment_managerial.example.class: Payment\ManagerialBundle\Example
+
+services:
+#    payment_managerial.example:
+#        class: %payment_managerial.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

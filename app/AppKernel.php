@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Payment\ApplicationBundle\PaymentApplicationBundle(),
             new Payment\FinesBundle\PaymentFinesBundle(),
             new Payment\ServiceBundle\PaymentServiceBundle(),
+            new Payment\ManagerialBundle\PaymentManagerialBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
